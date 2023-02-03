@@ -26,23 +26,8 @@ export default class Tunes {
    * @returns {{name: string, icon: string, title: string}[]}
    */
   static get tunes() {
-    return [
-      {
-        name: 'withBorder',
-        icon: borderIcon,
-        title: 'With border',
-      },
-      {
-        name: 'stretched',
-        icon: stretchedIcon,
-        title: 'Stretch image',
-      },
-      {
-        name: 'withBackground',
-        icon: bgIcon,
-        title: 'With background',
-      },
-    ];
+    // No tunes because MD does not support them.
+    return [];
   }
 
   /**
