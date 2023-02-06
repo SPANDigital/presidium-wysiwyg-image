@@ -6,16 +6,23 @@ on:
       - master
 
 jobs:
-  publish:
+  release:
+    name: Release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - name: Checkout repository
+        uses: actions/checkout@v2
         with:
-          node-version: 12
-          registry-url: https://npm.pkg.github.com/
-      - run: yarn
-      - run: yarn build
-      - run: yarn publish --access=restricted
+          fetch-depth: 0
+      - name: Automatic GitHub Release
+        uses: justincy/github-action-npm-release@2.0.1
+        id: release
+      - uses: actions/setup-node@v1
+        if: steps.release.outputs.released == 'true'
+        with:
+          registry-url: 'https://npm.pkg.github.com'
+      - name: Publish
+        if: steps.release.outputs.released == 'true'
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
