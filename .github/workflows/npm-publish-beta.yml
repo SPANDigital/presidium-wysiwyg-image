@@ -19,6 +19,7 @@ jobs:
         with:
           version-type: 'prerelease'
           preid: 'beta'
+          tag-prefix: 'v'
           commit-message: '{{version}}'
       - run: yarn
       - run: yarn build
