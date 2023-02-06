@@ -3,7 +3,7 @@ name: Publish package to NPM
 on:
   push:
     branches:
-      - master
+      - develop
 
 jobs:
   publish:
@@ -19,3 +19,11 @@ jobs:
       - run: yarn publish --access=restricted
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name:  'Automated Version Bump'
+        uses:  'phips28/gh-action-bump-version@develop'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag-suffix:  '-beta'
+          version-type: 'minor'
+          commit-message: '{{version}}'
