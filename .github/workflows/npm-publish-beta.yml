@@ -14,14 +14,14 @@ jobs:
         with:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
-      - run: yarn
-      - run: yarn build
-      - run: yarn publish --access=restricted
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name:  'Automated Version Bump'
         uses:  'phips28/gh-action-bump-version@master'
         with:
           tag-suffix:  '-beta'
           version-type: 'minor'
           commit-message: '{{version}}'
+      - run: yarn
+      - run: yarn build
+      - run: yarn publish --access=restricted
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
