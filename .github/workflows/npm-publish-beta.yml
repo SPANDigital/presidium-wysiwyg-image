@@ -18,7 +18,8 @@ jobs:
         uses:  'phips28/gh-action-bump-version@master'
         with:
           tag-suffix:  '-beta'
-          version-type: 'patch'
+          version-type: 'prerelease'
+          preid: 'beta'
           commit-message: '{{version}}'
       - run: yarn
       - run: yarn build
