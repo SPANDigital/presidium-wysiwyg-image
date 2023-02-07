@@ -5,22 +5,26 @@ on:
     branches:
       - master
 
+name: Publish Package
 jobs:
-  publish:
+  release:
+    name: Publish Package
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # Use this GitHub Action
+      - name: Check package version
+        uses: technote-space/package-version-check-action@v1
         with:
-          node-version: 16
-          registry-url: https://npm.pkg.github.com/
-      - name:  'Automated Version Bump'
-        uses:  'phips28/gh-action-bump-version@master'
-        with:
-          version-type: 'patch'
-          commit-message: '{{version}}'
-      - run: yarn
-      - run: yarn build
-      - run: yarn publish --access=restricted
+          COMMIT_DISABLED: 1
+
+      - name: Install Package dependencies
+        run: yarn install
+      - name: Build
+        run: yarn build
+      - name: Publish
+        run: yarn publish --access=restricted
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
