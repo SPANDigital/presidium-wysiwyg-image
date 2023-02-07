@@ -10,20 +10,23 @@ jobs:
     name: Publish Package
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      # Use this GitHub Action
-      - name: Check package version
-        uses: technote-space/package-version-check-action@v1
+      - uses: MontyD/package-json-updated-action
+        id: version-updated
         with:
-          COMMIT_DISABLED: 1
-
-      - name: Install Package dependencies
-        run: yarn install
-      - name: Build
-        run: yarn build
-      - name: Publish
-        run: yarn publish --access=restricted
+          path: package.json
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - uses: actions/checkout@v1
+        if: steps.version-updated.outputs.has-updated
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v1
+        if: steps.version-updated.outputs.has-updated
+        with:
+          node-version: '12.x'
+      - run: yarn install
+        if: steps.version-updated.outputs.has-updated
+      - run: yarn build
+        if: steps.version-updated.outputs.has-updated
+      - run: yarn publish --access=restricted
+        if: steps.version-updated.outputs.has-updated
