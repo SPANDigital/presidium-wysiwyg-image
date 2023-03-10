@@ -49,7 +49,7 @@
       content: attr(data-placeholder);
       color: #707684;
       font-weight: normal;
-      /* display: none; */
+      display: none;
     }
 
     &[contentEditable="true"][data-placeholder]:empty {
@@ -65,7 +65,7 @@
 
   &--empty {
     ^&__image {
-      /* display: none; */
+      display: none; 
     }
   }
 
