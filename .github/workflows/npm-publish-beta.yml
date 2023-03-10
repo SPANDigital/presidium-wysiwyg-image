@@ -22,7 +22,7 @@ jobs:
           tag-prefix: 'v'
           commit-message: '{{version}}'
       - run: yarn
-      - run: yarn build:dev 
+      - run: yarn build
       - run: yarn publish --access=restricted
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
