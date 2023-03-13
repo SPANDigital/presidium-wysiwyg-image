@@ -197,8 +197,7 @@ export default class ImageTool {
   save() {
     const caption = this.ui.nodes.caption;
 
-    this._data.caption = caption.innerHTML;
-    console.log("caption text: ", caption.innerHTML);
+    this._data.caption = caption.innerHTML;    
 
     return this.data;
   }
@@ -262,9 +261,7 @@ export default class ImageTool {
    *                              {@link https://github.com/codex-team/editor.js/blob/master/types/tools/paste-events.d.ts}
    * @returns {void}
    */
-  async onPaste(event) {
-    console.log("onPaste Event: ");
-    console.log(event);
+  async onPaste(event) {        
     switch (event.type) {
       case 'tag': {
         const image = event.detail.data;
