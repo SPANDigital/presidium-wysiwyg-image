@@ -198,7 +198,7 @@ export default class ImageTool {
     const caption = this.ui.nodes.caption;
 
     this._data.caption = caption.innerHTML;
-    console.log(caption.innerHTML);
+    console.log("caption text: ", caption.innerHTML);
 
     return this.data;
   }
@@ -263,6 +263,7 @@ export default class ImageTool {
    * @returns {void}
    */
   async onPaste(event) {
+    console.log("onPaste Event: ");
     console.log(event);
     switch (event.type) {
       case 'tag': {
