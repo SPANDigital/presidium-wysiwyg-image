@@ -195,10 +195,15 @@ export default class ImageTool {
    * @returns {ImageToolData}
    */
   save() {
+    console.log("ui node:");
+    console.log(this.ui);
     const caption = this.ui.nodes.caption;
+    console.log("caption element");
+    console.log(caption);
 
     this._data.caption = caption.innerHTML;    
-
+    console.log("this.data: ");
+    console.log(this.data);
     return this.data;
   }
 
