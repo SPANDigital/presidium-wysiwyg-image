@@ -173,7 +173,7 @@ export default class ImageTool {
    * @returns {HTMLDivElement}
    */
   render() {
-    console.log("Here: ")
+    console.log("Here: ");
     console.log(this.data);
     return this.ui.render(this.data);
   }
