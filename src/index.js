@@ -327,7 +327,7 @@ export default class ImageTool {
    */
   get data() {
     console.log("data: ");
-    console.log(this._data)
+    console.log(this._data);
     return this._data;
   }
 
