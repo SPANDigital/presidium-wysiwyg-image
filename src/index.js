@@ -173,8 +173,6 @@ export default class ImageTool {
    * @returns {HTMLDivElement}
    */
   render() {
-    console.log("Here: ");
-    console.log(this.data);
     return this.ui.render(this.data);
   }
 
@@ -328,6 +326,8 @@ export default class ImageTool {
    * @returns {ImageToolData}
    */
   get data() {
+    console.log("data: ");
+    console.log(this._data)
     return this._data;
   }
 
