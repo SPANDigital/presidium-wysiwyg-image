@@ -204,7 +204,7 @@ export default class ImageTool {
     this._data.caption = caption.innerHTML;    
     console.log("this.data: ");
     console.log(this.data);
-    return this.data;
+    return this._data;
   }
 
   /**
@@ -331,8 +331,8 @@ export default class ImageTool {
    * @returns {ImageToolData}
    */
   get data() {
-    console.log("data: ");
-    console.log(this._data);
+    // console.log("data: ");
+    // console.log(this._data);
     return this._data;
   }
 
