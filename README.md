@@ -285,3 +285,18 @@ var editor = EditorJS({
   ...
 });
 ```
+
+## Releases
+
+### Master
+To release a new non-beta version, do the following:
+
+1. Merge your changes into `master`
+2. Increment the version in `package.json` (The release GitHub action will not run unless this is done)
+3. run `npm i`
+4. Commit and push
+
+The package will then be published to the @spandigital registry.
+
+### Develop
+Beta packages are automatically published whenever a commit is pushed to the `develop` branch.
