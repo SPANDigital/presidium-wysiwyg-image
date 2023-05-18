@@ -1,20 +1,15 @@
 const path = require('path');
 
-module.exports = {   
+module.exports = {
+  entry: './src/index.js', // specify the entry point of your JavaScript code
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader',
-            query: {
-              presets: [ '@babel/preset-env' ],
-            },
-          },
-          'eslint-loader'
-        ]
+        use: {
+          loader: 'babel-loader'
+        }
       },
       {
         test: /\.css$/,
@@ -34,12 +29,15 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        loader: 'svg-inline-loader?removeSVGTagAttrs=false'
+        loader: 'svg-inline-loader',
+          options: {
+            removeSVGTagAttrs: false
+          }
       }
     ]
   },
   output: {
-    path: path.join(__dirname, '/dist'),
+    path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
     filename: 'bundle.js',
     library: 'ImageTool',
