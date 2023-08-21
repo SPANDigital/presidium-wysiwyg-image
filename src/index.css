@@ -135,6 +135,12 @@
       }
     }
   }
+
+  &__button-text-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 @keyframes image-preloader-spin {
